@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css"></link>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="flex-container">
+        <div id="Bank">
+        <p class="Title">Your Bank</p>
+        <p id="DispBalance">Balance:</p>
+        <p id="DispLoan"></p>
+        <button class="Button" id="BtnGetLoan">Get a loan</button>
+        </div>
+
+        <div id="Work">
+            <p class="Title">Work</p>
+            <p id="DispSalary">Salary:</p>
+            <button class="Button" id="BtnBank">Transfer</button>
+            <button class="Button" id="BtnWork">Work</button>
+            <button class="Button" id="BtnRepayLoan" style=display:none >Repay loan</button>
+        </div>
+
+        <div id="LaptopSelect">
+            <p class="Title">Laptops</p>
+            <select name="SelLaptop" id="LaptopSelector">
+
+            </select>
+            <ul id="DispLaptopFeatures">
+
+            </ul>
+        </div>
+    </div>
+
+
+    <div id="LaptopInfo" class="flex-container">
+        <div id="Image">
+        <img id="LaptopImg" width="300" src="https://noroff-komputer-store-api.herokuapp.com/assets/images/3.jpg" alt="">   
+        </div>
+        <div>
+        <p id="LaptopName" class="Title"></p>
+        <p id="LaptopDesc"></p>
+        </div>
+        <div>
+        <p id="LaptopPrice"></p>
+        <button class="Button" id="BtnBuyLaptop" style="display:none" >BUY NOW</button>
+        </div>
+    </div>
+</body>
+</html>

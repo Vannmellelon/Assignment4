@@ -1,0 +1,32 @@
+#Bank {
+    background-color:lightblue;
+}
+
+#Work {
+    background-color: blanchedalmond;
+}
+
+#LaptopSelect {
+background-color: aquamarine;
+}
+
+#LaptopInfo {
+    background-color: darkgray;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.Title{
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: black;
+}
+
+.Button{
+    background-color: aqua;
+}
