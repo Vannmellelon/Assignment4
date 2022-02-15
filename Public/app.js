@@ -39,8 +39,10 @@ const elImgLaptop = document.getElementById("LaptopImg");
 const elNameLaptop = document.getElementById("LaptopName");
 const elDescLaptop = document.getElementById("LaptopDesc");
 const elPriceLaptop = document.getElementById("LaptopPrice");
+const elBtnBuyLaptop = document.getElementById("BtnBuyLaptop");
 
 elLaptopSelector.addEventListener("change", funcDisplayLaptop);
+elBtnBuyLaptop.addEventListener("click", funcBuyLaptop);
 
 let globLaptops = [];
 
@@ -168,16 +170,17 @@ const UIController = (() => {
     }
 
     const _createLaptopSelector = (laptops) => {
-        _laptopSelector.innerHTML = "";
+        //_laptopSelector.innerHTML = "";
         for (const lp of laptops) {
             _laptopSelector.innerHTML += `<option value="${lp.id}">${lp.title}</option>`;
         }
     }
 
-    // there is a better way
+    // load all images and make them visible as needed by toggling display
+
     const _getLaptopImages = (laptops) => {
         for (const lp of laptops) {
-            _imageContainer.innerHTML += `<img id="img${lp.id}" width="300" src="${imgURL+lp.image}" alt="${lp.title}" style=display:none >`;
+            _imageContainer.innerHTML += `<img id="img${lp.id}" width="300" src="${imgURL+lp.image}" alt="${lp.title}" style="display:none" >`;
         }
     }
 
@@ -248,33 +251,51 @@ function funcDisplayLaptop() {
     }
     funcRenderLaptopInfo(val);
 }
+
+
 // Laptop
 // Display image, name, description and price of laptop
 // messy, make nicer if time, no for-loop 
 function funcRenderLaptopInfo(laptopId) {
 
-    const imgURL = "https://noroff-komputer-store-api.herokuapp.com/";
+    funcClearLaptopInfo(laptopId);
 
     for (const lp of globLaptops) {
         if (lp.id == laptopId) {
-            //elImgLaptop.innerHTML = `<img width="300" src="${imgURL + lp.image}" alt=""></img>`;
-            /*
-            elImgLaptop.src = imgURL + lp.image;
-            elImgLaptop.alt = lp.title;
-            elImgLaptop.width = "200";
-            */
-            document.getElementById("img"+lp.id).style = "display:block";
+            document.getElementById("img"+lp.id).style.display = "block";
             elNameLaptop.innerHTML = lp.title;
-            elLaptopInfo.innerHTML = lp.description;
+            elDescLaptop.innerHTML = lp.description;
             elPriceLaptop.innerHTML = lp.price;
+            elBtnBuyLaptop.style.display = "block";
         }
     }
+}
+
+
+// Laptop
+// Clear laptop-info
+function funcClearLaptopInfo(id) {
+
+    // does not work :( whyyy
+    document.getElementById("img"+id).style.display = "none";
+    elNameLaptop.innerHTML = "";
+    elDescLaptop.innerHTML = "";
+    elPriceLaptop.innerHTML = ""
+    //elBtnBuyLaptop.style.display = "none";
 
 }
+
 
 // Laptop
 // BUY NOW button 
 // should buy laptop if you have enough money, alert if you dont, nice mssg if u do :3
-function buyLaptop() {
-
+function funcBuyLaptop() {
+    const price = elPriceLaptop.textContent;
+    console.log(price);
+    if (bankMoney.balance >= price) {
+        window.alert(`Congratulations on your newly purchased ${elNameLaptop.textContent} komputer!\n\nEnjoy!🥳👩‍💻`);
+        bankMoney.balance -= price;
+        funcRenderBankWork();
+    } else {window.alert(`You can't afford this komputer!\n\nGo work!👩‍💻💦`);
+}
 }
