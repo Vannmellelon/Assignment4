@@ -267,6 +267,8 @@ function funcRenderLaptopInfo(laptopId) {
             elDescLaptop.innerHTML = lp.description;
             elPriceLaptop.innerHTML = lp.price;
             elBtnBuyLaptop.style.display = "block";
+        } else {
+            document.getElementById("img"+lp.id).style.display = "none";
         }
     }
 }
@@ -277,7 +279,7 @@ function funcRenderLaptopInfo(laptopId) {
 function funcClearLaptopInfo(id) {
 
     // does not work :( whyyy
-    document.getElementById("img"+id).style.display = "none";
+    //document.getElementById("img"+id).style.display = "none";
     elNameLaptop.innerHTML = "";
     elDescLaptop.innerHTML = "";
     elPriceLaptop.innerHTML = ""
